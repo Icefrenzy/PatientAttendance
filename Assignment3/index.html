@@ -1,0 +1,51 @@
+﻿<html ng-app="patientAttendance">
+<head>
+    <meta charset="utf-8" />
+    <title>300702645 - Assignment 3</title>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <script src="lib/require.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="patientController" id="main">
+
+    <h1 class="text-center">Patient Attendance</h1>
+    <div id="nav" >
+        <ul id="navul" class="text-center">
+            <li id="navli"><a href="/">Home</a></li>
+            <li id="navli">Login</li>
+        </ul>
+
+    </div>
+    <form id="searchForm">
+        
+        First Name:<input ng-model="firstname" /> Last Name: <input ng-model="lastname" /> Age: <input ng-model="age" /> <br /> <br />
+        <button type="submit" ng-click="searchPatient(firstname, lastname, age)" ng-hide="editing == true">
+            Search
+        </button>
+        <button ng-click="savePatient(firstname, lastname, age)" ng-hide="editing == true">Add Patient</button>
+        <button ng-click="overridePatient(patient,firstname, lastname, age)" ng-hide="editing == false">Save</button>
+        <button ng-click="canceleditPatient(firstname, lastname, age)" ng-hide="editing == false">Cancel</button>
+    </form>
+    
+    <div id="listBox">
+        <form id="listForm">
+            <ul id="patientsul" ng-repeat="patient in patientArray | startFrom:currentPage*10 | limitTo: 10">
+                <li>
+                    <hr />
+                    Name: {{patient.first_name}} {{patient.last_name}} <button id="editButton" ng-click="editPatient(patient)"> Edit</button> <button id="deleteButton" ng-click="deletePatient(patient)"> Delete</button> <br />
+                    Age: {{patient.age}} <br />
+                    Created: {{patient.created}} <br />
+                    Modified: {{patient.modified}} <br />
+                </li>
+                
+            </ul>
+        </form>
+        <div id="bottomList">
+            {{currentPage+1}}/{{totalPages()}} <br />
+            <button ng-disabled="currentPage==0"ng-click="currentPage=currentPage-1">Previous</button> <button ng-disabled="currentPage>=patientArray.length/(10)-1" ng-click="currentPage=currentPage+1">Next</button>
+        </div>
+    </div>
+    <div id="copyright" class="text-center">Jan Kevin Munar, 300702645 Copyright 2015</div>
+</body>
+</html>
