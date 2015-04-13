@@ -1,10 +1,14 @@
 {
-  "name": "Assignment3",
-  "version": "0.0.0",
-  "description": "Assignment3",
-  "main": "server.js",
-  "author": {
-    "name": "Kevin",
-    "email": ""
-  }
+    "name": "Assignment3",
+    "version": "0.0.0",
+    "description": "Assignment3",
+    "main": "server.js",
+    "author": {
+        "name": "Kevin",
+        "email": ""
+    },
+    "dependencies":  {
+        "express": "*",
+        "mongoose": "*"
+    }
 }

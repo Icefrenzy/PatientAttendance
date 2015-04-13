@@ -20,7 +20,7 @@ var path = require('path');
 app.use(express.static(path.join(__dirname, '/')));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/COMP308'), function (error) {
+mongoose.connect('mongodb://admin:jokjok@ds035250.mongolab.com:35250/comp308'), function (error) {
     if (error)
         console.log(error);
 }
